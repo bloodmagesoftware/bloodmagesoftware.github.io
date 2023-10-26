@@ -1,6 +1,10 @@
 # build output
 dist/
 
+# downloads
+public/hotlink-ok/*
+public/favicon.png
+
 # generated types
 .astro/
 

@@ -1,24 +1,46 @@
 ---
+import GameCanvas from "../components/GameCanvas.astro";
 interface Props {
     title: string;
+    desc: string;
 }
 
-const { title } = Astro.props;
+const { title, desc } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
+        <meta name="darkreader-lock" />
         <meta name="description" content="Astro description" />
         <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
         <meta name="generator" content={Astro.generator} />
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:image"
+            content="https://bloodmagesoftware.dev/hotlink-ok/preview.png"
+        />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={desc} />
+        <meta name="twitter:site" content="@bloodmage_sw" />
+        <meta name="twitter:creator" content="@bloodmage_sw" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:image"
+            content="https://bloodmagesoftware.dev/hotlink-ok/preview.png"
+        />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={desc} />
         <title>{title}</title>
+        <meta name="description" content={desc} />
     </head>
     <body>
         <main>
             <slot />
         </main>
+        <GameCanvas />
     </body>
 </html>
