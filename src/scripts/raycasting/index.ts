@@ -4,9 +4,9 @@ import "./movement";
 import { updatePlayer } from "./movement";
 
 function tick() {
-  updateDeltaTime();
-  updatePlayer();
-  drawFrame();
+	updateDeltaTime();
+	updatePlayer();
+	drawFrame();
 }
 
 window.setInterval(tick, 1000 / 30);
