@@ -9,4 +9,23 @@ function tick() {
 	drawFrame();
 }
 
-window.setInterval(tick, 1000 / 30);
+let tickInterval = 0;
+
+function startGame() {
+	if (tickInterval) {
+		return;
+	}
+	tickInterval = window.setInterval(tick, 1000 / 30);
+}
+
+function stopGame() {
+	if (tickInterval) {
+		window.clearInterval(tickInterval);
+		tickInterval = 0;
+	}
+}
+
+startGame();
+
+window.addEventListener("blur", stopGame);
+window.addEventListener("focus", startGame);
