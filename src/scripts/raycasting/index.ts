@@ -3,7 +3,7 @@ import { updateDeltaTime } from "./time";
 import "./movement";
 import { updatePlayer } from "./movement";
 
-const target_tick_time = 1000 / 24;
+const target_tick_time = 1000 / 60;
 
 function tick() {
 	const start = performance.now();
@@ -12,9 +12,9 @@ function tick() {
 	drawFrame();
 	const end = performance.now();
 	const delta = end - start;
-	if (delta > target_tick_time) {
+	if (delta > target_tick_time / 2) {
 		increasePerformance();
-	} else if (delta < target_tick_time / 2) {
+	} else if (delta < target_tick_time / 16) {
 		decreasePerformance();
 	}
 }
