@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: "Inika";
+	src: url(/fonts/inika.woff2) format("woff2");
+}
+
+:root {
+	background-color: #000000;
+}
+
+body,
+body * {
+	font-family: "Inika", sans-serif;
+	color: whitesmoke;
+}
+
+* {
+	cursor: url(/textures/cursor.svg), auto !important;
+}
