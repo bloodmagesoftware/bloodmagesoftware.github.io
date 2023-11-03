@@ -9,8 +9,10 @@ const max_depth = 16;
 const epsilon = 1e-6;
 
 export function drawFrame() {
+	ctx.fillStyle = "rgb(0,0,0)";
+	ctx.fillRect(0, 0, canvasEl.width, canvasEl.height);
 	const sky_texture = getTexture("sky");
-	const sky_start_x = Math.floor(player.angle * -sky_texture.width);
+	const sky_start_x = Math.floor(player.angle * -canvasEl.width);
 	ctx.drawImage(
 		sky_texture,
 		0,
@@ -28,18 +30,7 @@ export function drawFrame() {
 		0,
 		sky_texture.width,
 		sky_texture.height,
-		sky_start_x - canvasEl.width,
-		0,
-		canvasEl.width,
-		canvasEl.height,
-	);
-	ctx.drawImage(
-		sky_texture,
-		0,
-		0,
-		sky_texture.width,
-		sky_texture.height,
-		sky_start_x + canvasEl.width,
+		-(canvasEl.width - sky_start_x),
 		0,
 		canvasEl.width,
 		canvasEl.height,
