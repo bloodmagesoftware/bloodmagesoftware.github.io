@@ -10,7 +10,7 @@ export const ctx =
 		willReadFrequently: false,
 	}) ?? panic("No canvas context");
 ctx.imageSmoothingEnabled = false;
-const pixel_size = 2;
+const pixel_size = 1;
 
 function setCanvasSize() {
 	canvasEl.width = Math.ceil(window.innerWidth / pixel_size);

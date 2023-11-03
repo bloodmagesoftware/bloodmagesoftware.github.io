@@ -7,12 +7,21 @@ const fov = Math.PI / 3;
 const half_fov = fov / 2;
 const max_depth = 16;
 const epsilon = 1e-6;
+let slice_width = 1;
 
-export function drawFrame() {
-	ctx.fillStyle = "rgb(0,0,0)";
-	ctx.fillRect(0, 0, canvasEl.width, canvasEl.height);
+export function increasePerformance() {
+	slice_width = Math.min(16, slice_width + 1);
+}
+
+export function decreasePerformance() {
+	slice_width = Math.max(1, slice_width - 1);
+}
+
+function drawSky() {
 	const sky_texture = getTexture("sky");
-	const sky_start_x = Math.floor(player.angle * -canvasEl.width);
+	const sky_start_x = Math.floor(
+		player.angle * -canvasEl.width + sky_texture.width / 2,
+	);
 	ctx.drawImage(
 		sky_texture,
 		0,
@@ -22,7 +31,7 @@ export function drawFrame() {
 		sky_start_x,
 		0,
 		canvasEl.width,
-		canvasEl.height,
+		canvasEl.height / 2,
 	);
 	ctx.drawImage(
 		sky_texture,
@@ -33,10 +42,14 @@ export function drawFrame() {
 		-(canvasEl.width - sky_start_x),
 		0,
 		canvasEl.width,
-		canvasEl.height,
+		canvasEl.height / 2,
 	);
+}
 
-	const num_rays = Math.ceil(canvasEl.width / 2);
+export function drawFrame() {
+	drawSky();
+
+	const num_rays = Math.ceil(canvasEl.width / slice_width);
 	const delta_angle = fov / num_rays;
 	const x_map = Math.floor(player.pos_x);
 	const y_map = Math.floor(player.pos_y);
@@ -137,16 +150,24 @@ export function drawFrame() {
 			0,
 			1,
 			texImg.height,
-			ray << 1,
+			ray * slice_width,
 			wall_top,
-			2,
+			slice_width,
 			wall_height,
 		);
+		const darken = Math.min(1, depth / max_depth);
+		ctx.fillStyle = `rgba(0,0,0,${darken})`;
+		ctx.fillRect(ray * slice_width, wall_top, slice_width, wall_height);
 
 		// draw floor
 		ctx.fillStyle = "rgb(24,25,22)";
 		const floor_top = wall_top + wall_height;
-		ctx.fillRect(ray * 2, floor_top, 2, canvasEl.height - floor_top);
+		ctx.fillRect(
+			ray * slice_width,
+			floor_top,
+			slice_width,
+			canvasEl.height - floor_top,
+		);
 
 		ray_angle += delta_angle;
 	}
