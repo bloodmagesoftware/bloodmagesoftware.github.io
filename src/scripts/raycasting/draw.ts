@@ -9,9 +9,43 @@ const max_depth = 16;
 const epsilon = 1e-6;
 
 export function drawFrame() {
-	ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+	const sky_texture = getTexture("sky");
+	const sky_start_x = Math.floor(player.angle * -sky_texture.width);
+	ctx.drawImage(
+		sky_texture,
+		0,
+		0,
+		sky_texture.width,
+		sky_texture.height,
+		sky_start_x,
+		0,
+		canvasEl.width,
+		canvasEl.height,
+	);
+	ctx.drawImage(
+		sky_texture,
+		0,
+		0,
+		sky_texture.width,
+		sky_texture.height,
+		sky_start_x - canvasEl.width,
+		0,
+		canvasEl.width,
+		canvasEl.height,
+	);
+	ctx.drawImage(
+		sky_texture,
+		0,
+		0,
+		sky_texture.width,
+		sky_texture.height,
+		sky_start_x + canvasEl.width,
+		0,
+		canvasEl.width,
+		canvasEl.height,
+	);
 
-	const num_rays = Math.floor(canvasEl.width / 2);
+	const num_rays = Math.ceil(canvasEl.width / 2);
 	const delta_angle = fov / num_rays;
 	const x_map = Math.floor(player.pos_x);
 	const y_map = Math.floor(player.pos_y);
@@ -118,12 +152,8 @@ export function drawFrame() {
 			wall_height,
 		);
 
-		// draw sky
-		ctx.fillStyle = "rgb(30, 40, 75)";
-		ctx.fillRect(ray * 2, 0, 2, wall_top);
-
 		// draw floor
-		ctx.fillStyle = "#212124";
+		ctx.fillStyle = "rgb(24,25,22)";
 		const floor_top = wall_top + wall_height;
 		ctx.fillRect(ray * 2, floor_top, 2, canvasEl.height - floor_top);
 

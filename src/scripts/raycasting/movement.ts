@@ -22,7 +22,11 @@ function onMouseMove(ev: MouseEvent) {
 }
 
 function floatInterpolate(current: number, target: number) {
-	return current + (target - current) * getDeltaTime() * 0.01;
+	const diff = Math.abs(current - target);
+	if (diff > 10) {
+		return target;
+	}
+	return current + (target - current) * getDeltaTime() * 0.005;
 }
 
 onScroll();

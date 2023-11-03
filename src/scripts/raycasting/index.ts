@@ -15,7 +15,7 @@ function startGame() {
 	if (tickInterval) {
 		return;
 	}
-	tickInterval = window.setInterval(tick, 1000 / 30);
+	tickInterval = window.setInterval(tick, 1000 / 24);
 }
 
 function stopGame() {

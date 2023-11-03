@@ -1,10 +1,10 @@
-const texture_cache = new Map<number, HTMLImageElement>();
+const texture_cache = new Map<number | string, HTMLImageElement>();
 
-export function getTexture(index: number) {
-	if (!texture_cache.has(index)) {
+export function getTexture(key: number | string) {
+	if (!texture_cache.has(key)) {
 		const texture = new Image();
-		texture.src = `/textures/${index}.png`;
-		texture_cache.set(index, texture);
+		texture.src = `/textures/${key}.png`;
+		texture_cache.set(key, texture);
 	}
-	return texture_cache.get(index)!;
+	return texture_cache.get(key)!;
 }
