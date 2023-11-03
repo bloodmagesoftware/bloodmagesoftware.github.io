@@ -1,8 +1,53 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Link from "../components/Link.astro";
 ---
 
-<Layout title="Welcome to Bloodmage Software">
-    <h1>Welcome to Bloodmage Software</h1>
-     Work in progress.
+<Layout
+	title="Bloodmage Software"
+	desc="Crafting epic RPGs with our unique game engine. Unleash your inner hero. Join us on a journey of magic and adventure!"
+>
+	<h1 class="text-4xl mb-4">Bloodmage Software</h1>
+
+	<p>
+		Welcome to Bloodmage Software, where the magic of gaming's golden age
+		meets cutting-edge creativity!
+	</p>
+	<br />
+	<p>
+		At Bloodmage Software, we're not just a game studio; we're curators of
+		nostalgia and architects of immersive adventures. We specialize in
+		crafting retro-style adventure games that transport players back to the
+		cherished eras of pixelated wonders and captivating storytelling.
+	</p>
+
+	<img
+		src="https://go.dev/images/gophers/ladder.svg"
+		alt="Gopher on ladder"
+		class="w-1/4 md:w-1/12 mt-24 float-right"
+	/>
+	<h2 class="text-2xl mt-24 mb-4">The Engine</h2>
+	<p>
+		Introducing the future of retro gaming with a nostalgic twist - the
+		Bloodmage Engine! While we're living in an era of cutting-edge
+		technology and photorealistic graphics, sometimes, there's a yearning
+		for the simpler, pixelated charms of the 90s gaming world. That's where
+		our work-in-progress game engine comes into play, crafted with a love
+		for the classics and fueled by modern technologies like the <Link
+			href="https://go.dev/"
+		>
+			Go language
+		</Link>
+		 and <Link href="https://www.libsdl.org/">SDL2</Link> for cross-platform
+		support.
+	</p>
+	<br />
+	<p>
+		Bloodmage Engine is open source and available on
+		<Link href="https://github.com/bloodmagesoftware/bloodmage-engine">
+			GitHub
+		</Link>. Want to contribute?
+	</p>
+
+	<div class="block h-[50vh]"></div>
 </Layout>

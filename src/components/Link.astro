@@ -1,0 +1,14 @@
+---
+export interface Props {
+	href: string;
+	class?: string;
+}
+
+const target = Astro.props.href.startsWith("https://") ? "_blank" : undefined;
+const rel = target ? "noopener noreferrer" : undefined;
+const className = Astro.props.class ?? "underline hover:text-emerald-300";
+---
+
+<a href={Astro.props.href} class={className} target={target} rel={rel}>
+	<slot />
+</a>
