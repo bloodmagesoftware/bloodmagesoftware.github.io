@@ -25,12 +25,12 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      - name: Setup Selene
-        uses: Frank-Mayer/selene-setup@v1.0.0
+      - name: Setup Yab
+        uses: Frank-Mayer/yab-setup@v1.0.0
       - name: Install Dependencies
-        run: selene install
+        run: yab install
       - name: Build
-        run: selene build
+        run: yab build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
