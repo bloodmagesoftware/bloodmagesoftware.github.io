@@ -25,12 +25,10 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      - name: Setup Yab
-        uses: Frank-Mayer/yab-setup@v1.0.0
       - name: Install Dependencies
-        run: yab install
+        run: npm install
       - name: Build
-        run: yab build
+        run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:

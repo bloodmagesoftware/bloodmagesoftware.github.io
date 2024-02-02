@@ -55,7 +55,6 @@ export function drawFrame() {
 	const y_map = Math.floor(player.pos_y);
 
 	let ray_angle = player.angle - half_fov + epsilon;
-	let texture_x = 0;
 	for (let ray = 0; ray != num_rays; ++ray) {
 		let texture_hor = 1;
 		let texture_vert = 1;
@@ -86,8 +85,6 @@ export function drawFrame() {
 				y_hor += dy;
 				x_hor += dx;
 				depth_hor += delta_depth;
-
-				texture_x = x_hor % 1;
 			}
 		}
 
