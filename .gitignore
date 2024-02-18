@@ -2,8 +2,6 @@
 dist/
 
 # downloads
-public/hotlink-ok/*
-public/favicon.png
 public/fonts/*
 
 # generated types
