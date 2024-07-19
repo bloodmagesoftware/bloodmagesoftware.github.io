@@ -5,37 +5,18 @@ import { updatePlayer } from "./movement";
 
 const target_tick_time = 1000 / 60;
 
-function tick() {
-	const start = performance.now();
-	updateDeltaTime();
+function tick(start: number) {
+	updateDeltaTime(start);
 	updatePlayer();
 	drawFrame();
 	const end = performance.now();
 	const delta = end - start;
-	if (delta > target_tick_time / 2) {
+	if (delta >= target_tick_time) {
 		increasePerformance();
-	} else if (delta < target_tick_time / 16) {
+	} else if (delta <= target_tick_time / 16) {
 		decreasePerformance();
 	}
+	window.requestAnimationFrame(tick);
 }
 
-let tickInterval = 0;
-
-function startGame() {
-	if (tickInterval) {
-		return;
-	}
-	tickInterval = window.setInterval(tick, target_tick_time);
-}
-
-function stopGame() {
-	if (tickInterval) {
-		window.clearInterval(tickInterval);
-		tickInterval = 0;
-	}
-}
-
-startGame();
-
-window.addEventListener("blur", stopGame);
-window.addEventListener("focus", startGame);
+window.requestAnimationFrame(tick);

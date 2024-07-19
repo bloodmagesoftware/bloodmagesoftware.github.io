@@ -7,14 +7,14 @@ const fov = Math.PI / 3;
 const half_fov = fov / 2;
 const max_depth = 16;
 const epsilon = 1e-6;
-let slice_width = 1;
+let slice_width = 4;
 
 export function increasePerformance() {
-	slice_width = Math.min(16, slice_width * 2);
+	slice_width = Math.min(16, slice_width * 2) | 0;
 }
 
 export function decreasePerformance() {
-	slice_width = Math.max(1, slice_width / 2);
+	slice_width = Math.max(1, slice_width / 2) | 0;
 }
 
 function drawSky() {
