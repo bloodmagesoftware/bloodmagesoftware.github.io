@@ -8,12 +8,24 @@
 }
 
 @font-face {
-  font-family: "Alagard";
-  src: url(/fonts/alagard.ttf) format("truetype");
+	font-family: "Alagard";
+	src: url(/fonts/alagard.ttf) format("truetype");
 }
 
 :root {
 	background-color: #000000;
+}
+
+body::before {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100lvw;
+	height: 100lvh;
+	z-index: -1;
+	background-color: rgba(black, 0.25);
+	filter: blur(10px);
 }
 
 body,
@@ -22,10 +34,58 @@ body * {
 	color: whitesmoke;
 }
 
-h1, h2 {
-  font-family: "Alagard", sans-serif;
+h1,
+h2,
+h1 > *,
+h2 > * {
+	font-family: "Alagard", sans-serif;
+	text-wrap: balance;
+	margin: {
+		top: 4rem;
+		bottom: 1rem;
+	}
+}
+
+h1 {
+	font-size: 3rem;
+}
+
+h2 {
+	font-size: 2rem;
+}
+
+p {
+	text-wrap: pretty;
+	margin: {
+		bottom: 0.5rem;
+	}
+}
+
+ul {
+	list-style-type: circle;
+	padding: {
+		left: 1rem;
+	}
+
+	li {
+		text-wrap: pretty;
+	}
 }
 
 * {
 	cursor: url(/textures/cursor.svg), auto !important;
+}
+
+@media screen and (min-width: 768px) {
+	h1 {
+		font-size: 4rem;
+	}
+
+	h2 {
+		font-size: 2.5rem;
+	}
+
+	p {
+		font-size: 1.25rem;
+	}
 }

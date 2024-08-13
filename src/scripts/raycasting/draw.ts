@@ -20,7 +20,8 @@ export function decreasePerformance() {
 function drawSky() {
 	const sky_texture = getTexture("sky");
 	const sky_start_x = Math.floor(
-		player.angle * -canvasEl.width + sky_texture.width / 2,
+		// player.angle * -canvasEl.width - sky_texture.width / 2,
+		player.angle * -canvasEl.width - canvasEl.width * 0.2,
 	);
 	ctx.drawImage(
 		sky_texture,
@@ -30,18 +31,7 @@ function drawSky() {
 		sky_texture.height,
 		sky_start_x,
 		0,
-		canvasEl.width,
-		canvasEl.height / 2,
-	);
-	ctx.drawImage(
-		sky_texture,
-		0,
-		0,
-		sky_texture.width,
-		sky_texture.height,
-		-(canvasEl.width - sky_start_x),
-		0,
-		canvasEl.width,
+		((canvasEl.height / 2) * sky_texture.width) / sky_texture.height,
 		canvasEl.height / 2,
 	);
 }
